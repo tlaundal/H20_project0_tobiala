@@ -10,3 +10,6 @@ def test_add_floats():
     actual = calculator.add(0.1, 0.2)
 
     assert abs(actual - expected) < tolerance
+
+def test_add_strings():
+    assert calculator.add("Hello ", "World") == "Hello World"
