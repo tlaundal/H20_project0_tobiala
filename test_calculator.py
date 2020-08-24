@@ -1,4 +1,5 @@
 import math
+import pytest
 import calculator
 
 def test_add():
@@ -15,6 +16,10 @@ def test_add_floats():
 def test_add_strings():
     assert calculator.add("Hello ", "World") == "Hello World"
 
+def test_add_fails_for_incompatible_types():
+    with pytest.raises(TypeError):
+        calculator.add("Hello", 5)
+
 def test_factorial():
     assert calculator.factorial(7) == math.factorial(7)
 
@@ -28,6 +33,10 @@ def test_sin():
 
 def test_divide():
     assert calculator.divide(10, 2) == 5
+
+def test_divide_by_zero_fails():
+    with pytest.raises(ZeroDivisionError):
+        calculator.divide(2, 0)
 
 def test_multiply():
     assert calculator.multiply(5, 2) == 10
